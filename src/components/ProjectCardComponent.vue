@@ -1,7 +1,6 @@
 <script>
 
 import axios from 'axios';
-import ProjectCardComponent from './ProjectCardComponent.vue';
 
 export default { 
   data(){
@@ -11,46 +10,41 @@ export default {
       lastPage: 1
     };
   },
-  components: {
-    ProjectCardComponent
+  created(){
+    this.getPosts(this.currentPage);
   },
-  // created(){
-  //  this.getPosts(this.currentPage);
-  //},
-  //methods: {
-  //  getPosts(page) {
-  //    axios
-  //      .get('http://127.0.0.1:8000/api/posts', {
-  //        params:{
-  //          page: page
-  //        }
-  //      })
-  //      .then(response => {
-  //        console.log(response);
-  //        this.posts = response.data.results.data;
-  //        this.currentPage = response.data.results.current_page;
-  //       this.lastPage = response.data.results.last_page;
-  //      })
-  //  },
-  //  previousPage() {
-  //    if (this.currentPage > 1) {
-  //      this.getPosts(this.currentPage - 1)
-  //    }
-  //  },
-  //  nextPage() {
-  //    if (this.currentPage < this.lastPage) {
-  //    this.getPosts(this.currentPage + 1)
-  //    }
-  //  },
-  //}
+  methods: {
+    getPosts(page) {
+      axios
+        .get('http://127.0.0.1:8000/api/posts', {
+          params:{
+            page: page
+          }
+        })
+        .then(response => {
+          console.log(response);
+          this.posts = response.data.results.data;
+          this.currentPage = response.data.results.current_page;
+          this.lastPage = response.data.results.last_page;
+        })
+    },
+    previousPage() {
+      if (this.currentPage > 1) {
+        this.getPosts(this.currentPage - 1)
+      }
+    },
+    nextPage() {
+      if (this.currentPage < this.lastPage) {
+        this.getPosts(this.currentPage + 1)
+      }
+    },
+  }
 };
 </script>
 
 <template>
-
-    <ProjectCardComponent/> 
   
-    <!-- <h1>
+    <h1>
       All my posts:
     </h1>
 
@@ -96,7 +90,7 @@ export default {
           Next Page
         </button>
       </div>
-    </div> -->
+    </div>
 
 </template>
 
