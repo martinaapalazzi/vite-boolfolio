@@ -11,22 +11,14 @@ export default {
     };
   },
   created(){
-    axios
-        .get('http://127.0.0.1:8000/api/posts')
-        .then(response => {
-          console.log(response);
-          this.posts = response.data.results.data;
-          this.currentPage = response.data.results.current_page;
-          this.lastPage = response.data.results.last_page;
-        })
+    this.getPosts(this.currentPage);
   },
   methods: {
-    previousPage() {
-      if (this.currentPage > 1) {
-        axios
+    getPosts(page) {
+      axios
         .get('http://127.0.0.1:8000/api/posts', {
           params:{
-            page: this.lastPage - 1
+            page: page
           }
         })
         .then(response => {
@@ -35,22 +27,15 @@ export default {
           this.currentPage = response.data.results.current_page;
           this.lastPage = response.data.results.last_page;
         })
+    },
+    previousPage() {
+      if (this.currentPage > 1) {
+        this.getPosts(this.currentPage - 1)
       }
     },
     nextPage() {
       if (this.currentPage < this.lastPage) {
-        axios
-        .get('http://127.0.0.1:8000/api/posts', {
-          params:{
-            page: this.currentPage + 1 
-          }
-        })
-        .then(response => {
-          console.log(response);
-          this.posts = response.data.results.data;
-          this.currentPage = response.data.results.current_page;
-          this.lastPage = response.data.results.last_page;
-        })
+        this.getPosts(this.currentPage + 1)
       }
     },
   }
