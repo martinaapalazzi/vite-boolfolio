@@ -75,6 +75,10 @@ export default {
             </ul>
           </div>
 
+          <div v-if="post.cover_img != null">
+            <img :src="'http://127.0.0.1:8000/storage/' + post.cover_img " :alt="post.title">
+          </div>
+
         </div>
       </div>
 
