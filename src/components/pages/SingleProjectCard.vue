@@ -71,6 +71,15 @@ export default {
           </div>
 
         </div>
+
+        <div class="navigation-container">
+          <button>
+            <router-link :to="{ name: 'posts.index' }" class="classe_css">
+              Go back to Posts Page!
+            </router-link>
+          </button>
+        </div>
+
       </div>
     </div>
 
