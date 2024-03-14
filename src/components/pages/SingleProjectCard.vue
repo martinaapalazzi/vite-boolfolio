@@ -12,12 +12,20 @@ export default {
     this.getPost();
   },
   methods: {
-    getPosts() {
+    getPost() {
       axios
         .get('http://127.0.0.1:8000/api/posts' + this.$route.params.slug)
         .then(response => {
           console.log(response);
-          this.post = response.data.results.data;
+
+          if (response.data.success) {
+            this.post = response.data.results.data;
+          }
+          else {
+            // redirect alla pagina 404
+            this.$router.push({ name: 'not-found' })
+          }
+          
         })
     },
   }
@@ -32,7 +40,7 @@ export default {
 
     <div class="container">
       <div class="cards-container">
-        <div class="post-card">
+        <div class="post-card" v-if="post != null">
           <h3 class="post-title">
             {{ post.title }}
           </h3>
