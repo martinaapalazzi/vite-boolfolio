@@ -5,38 +5,20 @@ import axios from 'axios';
 export default { 
   data(){
     return {
-      posts: [],
-      currentPage: 1,
-      lastPage: 1
+      post: null
     };
   },
   created(){
-    this.getPosts(this.currentPage);
+    this.getPost();
   },
   methods: {
-    getPosts(page) {
+    getPosts() {
       axios
-        .get('http://127.0.0.1:8000/api/posts', {
-          params:{
-            page: page
-          }
-        })
+        .get('http://127.0.0.1:8000/api/posts' + this.$route.params.slug)
         .then(response => {
           console.log(response);
-          this.posts = response.data.results.data;
-          this.currentPage = response.data.results.current_page;
-          this.lastPage = response.data.results.last_page;
+          this.post = response.data.results.data;
         })
-    },
-    previousPage() {
-      if (this.currentPage > 1) {
-        this.getPosts(this.currentPage - 1)
-      }
-    },
-    nextPage() {
-      if (this.currentPage < this.lastPage) {
-        this.getPosts(this.currentPage + 1)
-      }
     },
   }
 };
@@ -50,7 +32,7 @@ export default {
 
     <div class="container">
       <div class="cards-container">
-        <div class="post-card" v-for="post in posts" :key="post.id">
+        <div class="post-card">
           <h3 class="post-title">
             {{ post.title }}
           </h3>
@@ -80,24 +62,7 @@ export default {
             <img :src="'http://127.0.0.1:8000/storage/' + post.cover_img " :alt="post.title">
           </div>
 
-          <div>
-            <button>
-              <router-link :to="{ name: 'posts.show', params: { slug: post.slug } }" class="btn btn-primary">
-                Show this post!
-              </router-link>
-            </button>
-          </div>
-
         </div>
-      </div>
-
-      <div class="navigation-container">
-        <button @click="previousPage()">
-          Previous Page
-        </button>
-        <button @click="nextPage()">
-          Next Page
-        </button>
       </div>
     </div>
 
@@ -125,11 +90,4 @@ export default {
   border: 2px solid rosybrown;
   padding: 30px;
 }
-
-.navigation-container {
-  margin-top: 50px;
-  display: flex;
-  justify-content: space-around;
-}
-
 </style>

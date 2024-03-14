@@ -12,17 +12,12 @@ export default {
       lastPage: 1
     };
   },
-  components: {
-    ProjectCardComponent
-  }
 };
 </script>
 
 <template>
 
   <RouterView></RouterView>
-  
-  <ProjectCardComponent/> 
 
 </template>
 

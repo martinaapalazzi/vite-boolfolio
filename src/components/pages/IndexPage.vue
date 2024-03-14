@@ -3,19 +3,25 @@
 export default { 
   data(){
     return {
-      message: 'Hellooo'
+      message: 'This is your home page!'
     };
   },
 };
 </script>
 
 <template>
-  <h1>
-    {{ message }}
-  </h1>
+  <main>
+    <h1>
+      {{ message }}
+    </h1>
+  </main>
 </template>
 
 <style scoped>
+
+main {
+  margin-top: 30px;
+}
 
 
 </style>
