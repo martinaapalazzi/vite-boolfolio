@@ -64,10 +64,8 @@ export default {
             </span>
           </div>
 
-          <div>
-            <h4>
-              Technology:
-            </h4>
+          <div v-if="post.technologies != null">
+            Technology:
             <ul v-for="technology in post.technologies" :key="technology.id">
               <li>
                 {{ technology.title }}
@@ -76,6 +74,9 @@ export default {
           </div>
 
           <div v-if="post.cover_img != null">
+            <h4>
+              Image:
+            </h4>
             <img :src="'http://127.0.0.1:8000/storage/' + post.cover_img " :alt="post.title">
           </div>
 
@@ -95,5 +96,32 @@ export default {
 </template>
 
 <style scoped>
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.cards-container {
+  width: calc((100% / 2) - 30px);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 30px;
+  height: 300px;
+}
+
+.post-card{
+  margin-top: 20px ;
+  border: 2px solid rosybrown;
+  padding: 30px;
+}
+
+.navigation-container {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-around;
+}
 
 </style>
