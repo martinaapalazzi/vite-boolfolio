@@ -14,12 +14,12 @@ export default {
   methods: {
     getPost() {
       axios
-        .get('http://127.0.0.1:8000/api/posts' + this.$route.params.slug)
+        .get('http://127.0.0.1:8000/api/posts/' + this.$route.params.slug)
         .then(response => {
           console.log(response);
 
           if (response.data.success) {
-            this.post = response.data.results.data;
+            this.post = response.data.results;
           }
           else {
             // redirect alla pagina 404

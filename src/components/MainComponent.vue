@@ -7,9 +7,7 @@ import { RouterView } from 'vue-router';
 export default { 
   data(){
     return {
-      posts: [],
-      currentPage: 1,
-      lastPage: 1
+      
     };
   },
 };
