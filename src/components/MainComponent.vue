@@ -1,7 +1,8 @@
 <script>
 
 import axios from 'axios';
-import ProjectCardComponent from './ProjectCardComponent.vue';
+import ProjectCardComponent from './pages/ProjectCardComponent.vue';
+import { RouterView } from 'vue-router';
 
 export default { 
   data(){
@@ -19,10 +20,12 @@ export default {
 
 <template>
 
+  <RouterView></RouterView>
+  
   <ProjectCardComponent/> 
 
 </template>
 
 <style scoped>
 
-</style>
+</style>./pages/ProjectCardComponent.vue
