@@ -119,17 +119,39 @@ export default {
   height: 300px;
 }
 
-.post-card{
+.post-card {
   width: calc((100% / 4) - 30px);
   margin-top: 20px ;
   border: 2px solid rosybrown;
   padding: 30px;
+  text-align: center;
+}
+
+.post-card button {
+  margin-top: 10px;
+  background-color: none;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.post-card button a {
+  text-decoration: none;
 }
 
 .navigation-container {
   margin-top: 50px;
   display: flex;
   justify-content: space-around;
+}
+
+.navigation-container button {
+  background-color: pink;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 20px;
 }
 
 </style>

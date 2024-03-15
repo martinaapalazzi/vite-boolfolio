@@ -39,7 +39,7 @@ export default {
     </h1>
 
     <div class="container">
-      <div class="cards-container">
+      <div class="card-container">
         <div class="post-card" v-if="post != null">
           <h3 class="post-title">
             {{ post.title }}
@@ -88,23 +88,38 @@ export default {
 <style scoped>
 
 .container {
-  max-width: 1200px;
   margin: 0 auto;
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.cards-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  gap: 30px;
+.card-container {
   height: 300px;
 }
 
 .post-card{
-  width: calc((100% / 4) - 30px);
   margin-top: 20px ;
   border: 2px solid rosybrown;
   padding: 30px;
+  margin-bottom: 30px;
 }
+
+.navigation-container {
+  display: flex;
+  justify-content: center;
+}
+
+.navigation-container button {
+  background-color: pink;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 20px;
+}
+
+.navigation-container button a {
+  text-decoration: none;
+  color: black;
+}
+
 </style>
