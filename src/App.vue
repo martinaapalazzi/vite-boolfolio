@@ -23,9 +23,6 @@ export default {
 
 
 <template>
-  <h1>
-    {{ message }}
-  </h1>
 
   <HeaderComponent />
 

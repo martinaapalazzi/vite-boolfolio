@@ -41,8 +41,11 @@ export default {
               accepted: false
             })
             .then(response => {
-              console.log()
-        })
+              console.log(response.data)
+            })
+            .catch(error => {   // catch per vedere se la chiamata API è andata in errore
+              console.log(error)
+            })
       }
       else {
         alert('Insert the right datas!')

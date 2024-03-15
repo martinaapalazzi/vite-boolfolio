@@ -37,7 +37,7 @@ export default {
     </h1>
 
     <ul>
-      <li v-for="(link, index) in links" :key="ndex">
+      <li v-for="(link, index) in links" :key="index">
         <router-link :to="{ name: link.routerName }" class="classe_css">
           {{ link.label }}
         </router-link>
