@@ -3,6 +3,20 @@
 export default { 
   data(){
     return {
+      links: [
+        {
+          routerName: 'home', //name nel router.js
+          label: 'Home Page' //path nel router.js
+        },
+        {
+          routerName: 'posts.index',
+          label: 'Posts' 
+        },
+        {
+          routerName: 'contacts',
+          label: 'Contacts' 
+        },
+      ]
 
     };
   },
@@ -23,14 +37,9 @@ export default {
     </h1>
 
     <ul>
-      <li>
-        <router-link :to="{ name: 'home' }" class="classe_css">
-          Home page
-        </router-link>
-      </li>
-      <li>
-        <router-link :to="{ name: 'posts.index' }" class="classe_css">
-          Posts
+      <li v-for="(link, index) in links" :key="ndex">
+        <router-link :to="{ name: link.routerName }" class="classe_css">
+          {{ link.label }}
         </router-link>
       </li>
     </ul>

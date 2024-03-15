@@ -1,19 +1,104 @@
 <script>
+import axios from 'axios';
+
 
 export default { 
   data(){
     return {
-      message: 'This is your Contacts page!'
+      name: '',
+      email: '',
+      message: '',
+      accepted: false
     };
   },
+  methods: {
+    sendMessage() {
+      // console.log(this.name)
+      if (this.name !=  null 
+          &&
+          this.name != ''
+          &&
+          this.name.length <= 64
+          &&
+          this.email != null
+          && 
+          this.email != ''
+          &&
+          this.email.length <= 255
+          &&
+          this.message != null
+          &&
+          this.message != ''
+          &&
+          this.message.length <= 2048
+          &&
+          this.accepted ) {
+        axios.post().then(response => {
+          
+        })
+      }
+      else {
+        alert('Insert the right datas!')
+      }
+
+    }
+  }
 };
 </script>
 
 <template>
   <main>
     <h1>
-      {{ message }}
+      Contacts:
     </h1>
+
+    <div>
+
+      <form action="" method="POST" @submit.prevent="sendMessage()">
+
+        <div>
+          <label for="name">
+            Name <span class="required">*</span>
+          </label>
+          <input v-model="name" type="text" id="name" name="name" placeholder="Insert your name..." maxlength="64" required>
+        </div>
+
+        <div>
+          <label for="email">
+            Email <span class="required">*</span>
+          </label>
+          <input v-model="email" type="email" id="email" name="email" placeholder="Insert your email..." maxlength="255" required>
+        </div>
+
+        <div>
+          <label for="message">
+            Message <span class="required">*</span>
+          </label>
+          <textarea v-model="message" type="text" id="message" name="message" placeholder="Insert your message..." maxlength="2048" required></textarea>
+        </div>
+
+        <div>
+          <p>
+            All the fields with <span class="required">*</span> they are mandatory. 
+          </p>
+        </div>
+
+        <div class="form-check">
+          <input type="checkbox" value="1" id="accept" name="accept">
+          <label for="accept">
+            I read and accept <a href="#" target="_blank">Terms of condition</a> and the <a href="#" target="_blank">privacy police</a>
+          </label>
+        </div>
+
+        <div>
+          <button type="submit">
+            Send 
+          </button>
+        </div>
+
+      </form>
+
+    </div>
   </main>
 </template>
 
@@ -21,6 +106,10 @@ export default {
 
 main {
   margin-top: 30px;
+}
+
+.required {
+  color: red;
 }
 
 
