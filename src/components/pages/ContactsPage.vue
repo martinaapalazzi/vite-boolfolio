@@ -33,8 +33,15 @@ export default {
           this.message.length <= 2048
           &&
           this.accepted ) {
-        axios.post().then(response => {
-          
+        axios
+            .post('http://127.0.0.1:8000/api/contacts', {
+              name: this.name,
+              email: this.email,
+              message: this.message,
+              accepted: false
+            })
+            .then(response => {
+              console.log()
         })
       }
       else {
