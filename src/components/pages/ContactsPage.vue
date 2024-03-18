@@ -34,7 +34,7 @@ export default {
           &&
           this.accepted ) {
         axios
-            .post('http://127.0.0.1:8000/api/contacts', {
+            .post('http://127.0.0.1:8000/api/contacts', { // preso dalle routes di laravel in api.php/contacts
               name: this.name,
               email: this.email,
               message: this.message,
@@ -94,7 +94,10 @@ export default {
         </div>
 
         <div class="form-check">
-          <input type="checkbox" value="1" id="accept" name="accept">
+          <div>
+            Accepted: {{ accepted ? 'yes' : 'no' }}
+          </div>
+          <input type="checkbox" value="1" id="accept" name="accept" v-model="accepted" required>
           <label for="accept">
             I read and accept <a href="#" target="_blank">Terms of condition</a> and the <a href="#" target="_blank">privacy police</a>
           </label>
